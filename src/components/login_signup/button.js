@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, Button} from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-const Button = ({title}) => {
+const Butto = ({title}) => {
   const [titleText, setTitleText] = useState("Bird's Nest");
   const bodyText = 'This is not really a bird nest.';
 
@@ -17,6 +17,11 @@ const Button = ({title}) => {
         ]}>
         {title}
       </Text>
+      <Button
+        title="Learn More"
+        color="#841584"
+        accessibilityLabel="Learn more about this purple button"
+      />
     </View>
   );
 };
@@ -31,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default Butto;
