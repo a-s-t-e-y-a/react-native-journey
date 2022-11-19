@@ -1,39 +1,70 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View, Button} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  Button,
+  Image,
+  KeyboardAvoidingView,
+  TextInput,
+} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import tw from 'tailwind-react-native-classnames';
-const Butto = ({title}) => {
-  const [titleText, setTitleText] = useState("Bird's Nest");
-  const bodyText = 'This is not really a bird nest.';
-
-  const onPressTitle = () => {
-    setTitleText("Bird's Nest [pressed]");
-  };
+const {signupFields} = require('./constant.js');
+const fields = signupFields;
+const Register = props => {
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+  const [email, setemail] = useState('');
+  const [phone, setphone] = useState('');
+  const [countrycode, setcountrycode] = useState('');
 
   return (
     <View>
-      <Text
-        style={[
-          tw`text-4xl  rounded-lg px-12 py-4 text-center m-2 text-white bg-black`,
-        ]}>
-        {title}
-      </Text>
-      <Button
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <View>
+          <Image
+            source={require('../../assets/images/taxi-astronaut.gif')}></Image>
+        </View>
+        <KeyboardAvoidingView enabled>
+          <View>
+            <TextInput
+              style={[tw``]}
+              onChangeText={username => setusername(username)}
+              placeholder="Enter username"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={[tw``]}
+              onChangeText={password => setpassword(password)}
+              placeholder="Enter pasword"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={[tw``]}
+              onChangeText={email => setemail(email)}
+              placeholder="Enter email"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={[tw``]}
+              onChangeText={phone => setphone(phone)}
+              placeholder="Enter username"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={[tw``]}
+              onChangeText={countrycode => setcountrycode(countrycode)}
+              placeholder="Enter countrycode"
+            />
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  baseText: {
-    fontFamily: 'Cochin',
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
-
-export default Butto;
+module.exports = Register;
